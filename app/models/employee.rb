@@ -19,4 +19,13 @@ class Employee
       birthday.strftime('%b %d, %Y')
     end
   end
+
+  def self.find(employee_id)
+    Employee.new(Unirest.get("#{ ENV['HOST_NAME'] }/api/v2/employees/#{ employee_id }.json").body)
+  end
 end
+
+
+
+
+

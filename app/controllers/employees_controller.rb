@@ -26,7 +26,9 @@ class EmployeesController < ApplicationController
   end
 
   def show
-    @employee = Employee.new(Unirest.get("#{ ENV['HOST_NAME'] }/api/v2/employees/#{params[:id]}.json").body)
+    @employee = Employee.find(params[:id])
+    
+    # @employee = Employee.new(Unirest.get("#{ ENV['HOST_NAME'] }/api/v2/employees/#{params[:id]}.json").body)
   end
 
   def edit
