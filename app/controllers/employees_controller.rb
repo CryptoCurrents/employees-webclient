@@ -1,6 +1,10 @@
 class EmployeesController < ApplicationController
   def index
-    @employees = Unirest.get("#{ ENV['HOST_NAME'] }/api/v2/employees.json").body
+    @employees = []
+    response = Unirest.get("#{ ENV['HOST_NAME'] }/api/v2/employees.json").body
+    response.each do |employee_hash|
+      @employees << Employee.new(employee_hash)
+    end
   end
 
   def new

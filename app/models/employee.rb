@@ -11,4 +11,12 @@ class Employee
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def friendly_birthday
+    if birthday == "N/A"
+      "N/A"
+    else
+      birthday.strftime('%b %d, %Y')
+    end
+  end
 end
